@@ -10,7 +10,10 @@ const app = express()
 // connect db
 mongoose.connect(process.env.MONGO_URL, () => console.log('Db is connected successfully'))
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
+app.get("/", (req, res) => {
+    res.send("all working")
+});
 app.use('/api', authController)
 app.use('/api', userController)
 app.use('/post', postController)
